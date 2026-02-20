@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../pages/Home.vue'
+import overview from '../pages/Overview.vue'
 import Create from '../pages/Create.vue'
 import Edit from '../pages/Edit.vue'
+import Order from '../pages/Order.vue'
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: overview },
   { path: '/create', component: Create },
-  { path: '/edit/:id', component: Edit, props: true }
+  { path: '/edit/:id', component: Edit, props: true },
+  { path: '/order', component: Order }
 ]
 
 const router = createRouter({

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useInventoryStore, type InventoryItem } from '../store/inventory-store'
+import { useInventoryStore } from '../store/inventory-store'
 import { useRouter } from 'vue-router'
 
 const { products } = useInventoryStore()

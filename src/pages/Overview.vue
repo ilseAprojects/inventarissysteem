@@ -8,5 +8,6 @@ import ProductsTable from '../components/ProductsTable.vue'
 </div>
 <div>
   <button @click ="$router.push('/create')">Product Toevoegen</button>
+  <button @click ="$router.push('/Order')">Bestellen</button>
 </div>
   </template> 
