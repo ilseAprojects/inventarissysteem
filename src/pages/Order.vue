@@ -11,12 +11,13 @@ const productsToOrder = computed(() => {
 <template>
 <div>
     <h2>Te bestellen producten</h2>
-    <ul>
+    <ul v-if="productsToOrder.length > 0">
         <li v-for="product in productsToOrder" :key="product.id">
             {{ product.name }} - Huidige hoeveelheid: {{ product.actualAmount }} - Minimum hoeveelheid: {{ product.minimumAmount }}
             {{ product.minimumAmount - product.actualAmount }} stuks bestellen
         </li>
     </ul>
+    <p v-else>Geen producten onder de minimale hoeveelheid.</p>
 </div>
    <button @click ="$router.push('/')">Terug naar overzicht</button>
 </template>
