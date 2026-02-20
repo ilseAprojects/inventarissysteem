@@ -17,13 +17,14 @@ const handleSubmit = (newProduct: typeof product | null) => {
   if (newProduct) {
     const { name, actualAmount, minimumAmount } = newProduct
     addProduct({ name, actualAmount, minimumAmount })
-    router.push('/')
   }
+  router.push('/')
 }
-
 </script>  
 
 <template>
-    <h2>Product toevoegen  </h2>
-    <ProductForm :product="product" @submit="handleSubmit" />
+    <div class="page-container">
+        <h2>Product Toevoegen</h2>
+        <ProductForm :product="product" @submit="handleSubmit" />
+    </div>
 </template>

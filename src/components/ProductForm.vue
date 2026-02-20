@@ -23,23 +23,29 @@ watch(() => props.product, (p) => {
 const handleSubmit = () => {
     emit('submit', { ...localForm })
 }
+
+const handleCancel = () => {
+    emit('submit', null)
+}
 </script>
 
 <template>
     <form @submit.prevent="handleSubmit">
-        <div>
+        <div class="form-group">
             <label for="name">Naam:</label>
-            <input id="name" v-model="localForm.name" required />
+            <input id="name" v-model="localForm.name" type="text" required />
         </div>
-        <div>
+        <div class="form-group">
             <label for="actualAmount">Huidige Voorraad:</label>
-            <input id="actualAmount" type="number" v-model.number="localForm.actualAmount" required />
+            <input id="actualAmount" type="number" v-model.number="localForm.actualAmount" required min="0" />
         </div>
-        <div>
+        <div class="form-group">
             <label for="minimumAmount">Minimale Voorraad:</label>
-            <input id="minimumAmount" type="number" v-model.number="localForm.minimumAmount" required />
+            <input id="minimumAmount" type="number" v-model.number="localForm.minimumAmount" required min="0" />
         </div>
-        <button type="submit">Opslaan</button>
-        <button type="button" @click.prevent="emit('submit', null)">Annuleren</button>
+        <div class="form-actions">
+            <button type="submit">Opslaan</button>
+            <button type="button" @click="handleCancel">Annuleren</button>
+        </div>
     </form>
 </template>

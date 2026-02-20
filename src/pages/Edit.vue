@@ -16,20 +16,21 @@ const productToEdit = computed(() => {
 })
 
 const handleSubmit = (updatedProduct: InventoryItem | null) => {
-        if (!updatedProduct) return
-        updateProduct(updatedProduct)
+        if (updatedProduct) {
+            updateProduct(updatedProduct)
+        }
         router.push('/')
 }
 </script>
 
 <template>
-    <h2>Product bewerken</h2>
-    <div v-if="productToEdit">
-        <h2>Product bewerken</h2>
-        <ProductForm :product="productToEdit" @submit="handleSubmit" />
-    </div>
-
-    <div v-else>
-        <p>Product niet gevonden.</p>
+    <div class="page-container">
+        <h2>Product Bewerken</h2>
+        <div v-if="productToEdit.id">
+            <ProductForm :product="productToEdit" @submit="handleSubmit" />
+        </div>
+        <div v-else>
+            <p>Product niet gevonden.</p>
+        </div>
     </div>
 </template>
