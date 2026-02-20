@@ -47,8 +47,4 @@ table tbody tr.low-stock {
   color: #8b0000;
   font-weight: 500;
 }
-
-table tbody tr.low-stock:hover {
-  background-color: #ffb3b3;
-}
 </style>
