@@ -18,12 +18,18 @@ export function useInventoryStore() {
     { id: 7, name: 'Placeholder', actualAmount: 99, minimumAmount: 10 }
   ])
 
-  function updateProduct(id: number, actualAmount: number) {
-    const product = products.value.find(p => p.id === id)
-    if (product) {
-      product.actualAmount = actualAmount
+  function addProduct(newProduct: Omit<InventoryItem, 'id'>) {
+    const maxId = products.value.reduce((max, p) => Math.max(max, p.id), 0)
+    const product: InventoryItem = { id: maxId + 1, ...newProduct }
+    products.value.push(product)
+  }
+
+  function updateProduct(updated: InventoryItem) {
+    const index = products.value.findIndex(p => p.id === updated.id)
+    if (index !== -1) {
+      products.value[index] = { ...products.value[index], ...updated }
     }
   }
 
-  return { products, updateProduct }
+  return { products, addProduct, updateProduct }
 }
