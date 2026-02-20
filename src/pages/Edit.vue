@@ -4,11 +4,13 @@ import ProductForm from '../components/ProductForm.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
 
+const props = defineProps<{ id?: string }>()
+
 const route = useRoute()
 const router = useRouter()
 const { products, updateProduct } = useInventoryStore()
 
-const id = Number(route.params.id)
+const id = Number(route.params.id || props.id)
 const productToEdit = computed(() => {
     return products.value.find(p => p.id === id) || ({} as InventoryItem)
 })

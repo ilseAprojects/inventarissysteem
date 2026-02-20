@@ -7,7 +7,9 @@ export interface InventoryItem {
   minimumAmount: number
 }
 
-export function useInventoryStore() {
+let store: ReturnType<typeof createInventoryStore> | null = null
+
+function createInventoryStore() {
   const products = ref<InventoryItem[]>([
     { id: 1, name: 'Placeholder', actualAmount: 99, minimumAmount: 10 },
     { id: 2, name: 'Placeholder', actualAmount: 99, minimumAmount: 10 },
@@ -32,4 +34,11 @@ export function useInventoryStore() {
   }
 
   return { products, addProduct, updateProduct }
+}
+
+export function useInventoryStore() {
+  if (!store) {
+    store = createInventoryStore()
+  }
+  return store
 }
