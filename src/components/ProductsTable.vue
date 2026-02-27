@@ -2,20 +2,17 @@
 import { useInventoryStore } from '../store/inventory-store'
 import { useRouter } from 'vue-router'
 
-const { products } = useInventoryStore()
+const { products, isLowStock } = useInventoryStore()
 const router = useRouter()
 
 function editProduct(id: number) {
   router.push({ path: `/edit/${id}` })
 }
 
-function isLowStock(actualAmount: number, minimumAmount: number): boolean {
-  return actualAmount < minimumAmount
-}
 </script>
 
-<template> 
- <h1>Inventaris Systeem</h1>
+<template>
+  <h1>Inventaris Systeem</h1>
   <table>
     <thead>
       <tr>
@@ -27,19 +24,19 @@ function isLowStock(actualAmount: number, minimumAmount: number): boolean {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="product in products" :key="product.id" :class="{ 'low-stock': isLowStock(product.actualAmount, product.minimumAmount) }">
+      <tr v-for="product in products" :key="product.id" :class="{ 'low-stock': isLowStock(product) }">
         <td>{{ product.name }}</td>
         <td>{{ product.actualAmount }}</td>
         <td>{{ product.minimumAmount }}</td>
         <td>
-          <span v-if="isLowStock(product.actualAmount, product.minimumAmount)" class="status-warning">⚠️ Bijbestellen </span>
+          <span v-if="isLowStock(product)" class="status-warning">⚠️ Bijbestellen </span>
           <span v-else class="status-ok">✓ OK</span>
         </td>
         <td><button @click="editProduct(product.id)">Bewerken</button></td>
       </tr>
     </tbody>
   </table>
-  </template>
+</template>
 
 <style scoped>
 table tbody tr.low-stock {

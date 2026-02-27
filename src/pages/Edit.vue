@@ -8,18 +8,20 @@ const props = defineProps<{ id?: string }>()
 
 const route = useRoute()
 const router = useRouter()
-const { products, updateProduct } = useInventoryStore()
+const { getProductById, updateProduct } = useInventoryStore()
+
+const productToEdit = computed(() =>
+    getProductById(id) || ({} as InventoryItem)
+)
 
 const id = Number(route.params.id || props.id)
-const productToEdit = computed(() => {
-    return products.value.find(p => p.id === id) || ({} as InventoryItem)
-})
+
 
 const handleSubmit = (updatedProduct: InventoryItem | null) => {
-        if (updatedProduct) {
-            updateProduct(updatedProduct)
-        }
-        router.push('/')
+    if (updatedProduct) {
+        updateProduct(updatedProduct)
+    }
+    router.push('/')
 }
 </script>
 

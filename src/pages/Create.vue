@@ -20,11 +20,11 @@ const handleSubmit = (newProduct: typeof product | null) => {
   }
   router.push('/')
 }
-</script>  
+</script>
 
 <template>
-    <div class="page-container">
-        <h2>Product Toevoegen</h2>
-        <ProductForm :product="product" @submit="handleSubmit" />
-    </div>
+  <div class="page-container">
+    <h2>Product Toevoegen</h2>
+    <ProductForm :product="product" @submit="handleSubmit" />
+  </div>
 </template>

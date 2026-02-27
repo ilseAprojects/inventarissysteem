@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import ProductsTable from '../components/ProductsTable.vue'
 import { useInventoryStore } from '../store/inventory-store'
 
-const { products } = useInventoryStore()
+const { hasLowStock } = useInventoryStore()
 
-const hasLowStock = computed(() => {
-  return products.value.some(product => product.actualAmount < product.minimumAmount)
-})
 </script>
 
 <template>
-<div>
-  <ProductsTable />
-</div>
-<div>
-  <button @click="$router.push('/create')">Product Toevoegen</button>
-  <button :class="{ 'order-urgent': hasLowStock }" @click="$router.push('/Order')">Bestellen</button>
-</div>
+  <div>
+    <ProductsTable />
+  </div>
+  <div>
+    <button @click="$router.push('/create')">Product Toevoegen</button>
+    <button :class="{ 'order-urgent': hasLowStock }" @click="$router.push('/Order')">Bestellen</button>
+  </div>
 </template>
 
 <style scoped>
@@ -45,4 +41,4 @@ button.order-urgent:hover {
   background-color: #b71c1c;
   border-color: #ff6f6f;
 }
-</style> 
+</style>
