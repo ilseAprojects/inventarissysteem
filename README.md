@@ -1,5 +1,74 @@
-# Vue 3 + TypeScript + Vite
+# Inventaris Systeem
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple inventory management system built with Vue 3, TypeScript, and Vite.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 📝 Description
+
+This application allows you to track products in an inventory. Create, edit, and view product information through a  Vue 3 interface powered by the Composition API and `<script setup>` syntax.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (≥ 16)
+- npm or yarn
+
+### Installation
+
+```bash
+# clone the repo (if you haven't already)
+git clone https://github.com/ilseAprojects/inventarissysteem.git
+cd inventarissysteem
+
+# install dependencies
+npm install
+# or
+# yarn install
+```
+
+### Development
+
+Start the development server with hot reloading:
+
+```bash
+npm run dev
+# or
+# yarn dev
+```
+
+Then open http://localhost:5173 (or the port shown) in your browser.
+
+### Building for Production
+
+```bash
+npm run build
+# or
+# yarn build
+```
+
+The compiled files will be placed in the `dist` folder.
+
+## 📁 Project Structure
+
+```
+src/
+  ├─ assets/
+  ├─ components/      (reusable Vue components)
+  ├─ pages/           (route views: Create, Edit, Order, Overview)
+  ├─ router/          (Vue Router setup)
+  └─ store/           (Pinia inventory store)
+
+public/              (static assets)
+```
+
+## ✅ Usage
+
+- **Overview** lists all products.
+- **Create** lets you add a new product.
+- **Edit** modifies existing products.
+- **Order** handles ordering logic (if applicable).
+
+## 📜 License
+
+This project is open source and MIT licensed.
+
