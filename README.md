@@ -1,3 +1,5 @@
+(created by AI)
+
 # Inventaris Systeem
 
 A simple inventory management system built with Vue 3, TypeScript, and Vite.
