@@ -1,4 +1,4 @@
-(created by AI)
+(README description genereated by AI)
 
 # Inventaris Systeem
 
